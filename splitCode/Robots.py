@@ -1,0 +1,13 @@
+from urllib import request
+import io
+
+
+def get_rbotes(url):
+	if url.endswith('/'):
+	    path = url
+	else:
+		path = url + '/'
+	req = request.urlopen(path + 'robots.txt', data=None)
+	data = io.TextIOWrapper(req , encoding = 'utf-8')
+	return data.read()
+
